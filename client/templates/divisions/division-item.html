@@ -1,0 +1,26 @@
+<template name="divisionItem">
+	<div class="col-sm-4 article-item-div">
+		<a href="{{pathFor 'divisionPage'}}">
+			<div class="panel panel-default text-center">
+				<div class="panel-heading">
+					<h2>{{title}}</h2>
+				</div>
+				<div class="panel-body">
+					<div class="col-xs-6">
+						<h4>Teams:</h4>
+						<h4>{{teamCount}}</h4>
+					</div>
+					<div class="col-xs-6">
+						<h4>Rounds</h4>
+						<h4>{{roundsNumber}}</h4>
+					</div>
+					<hr>
+					<div class="col-xs-12">
+						<h5>Start Date:</h5>
+						<h5>{{startDate}}</h5>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</template>

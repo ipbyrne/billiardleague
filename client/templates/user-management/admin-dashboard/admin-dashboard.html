@@ -1,0 +1,52 @@
+<template name="adminDashboard">
+	{{#if isAdmin}}
+		{{> sendInvitationModal}}
+	
+		<h4 class="page-header">Users</h4>
+		<p>There are {{getPublishedCount 'users'}} users, {{teamCount}} teams, and {{divisionCount}} divisions.</p>
+		<div class="col-sm-9">
+			<input type="text" name="searchbar" class="search-bar fa form-control" placeholder="&#xF002;    Search Users" />
+			<br>
+			<br>
+		</div>
+		<div class="col-sm-3 text-center">
+			<button class="btn btn-success" data-toggle="modal" data-target="#send-invitation-modal">Add Member</button>
+			<br>
+			<br>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Email Address</th>
+					<th class="text-center">Role</th>
+					<th>Balance</th>
+					<th width="96"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each users}}
+					<tr>
+						<td class="text-left text-middle">{{emails.[0].address}}{{#if belongsToYou}}<label class="btn btn-sm btn-warning pull-right">You!</label>{{/if}}</td>
+						<td>
+							<select name="userRole" id="userRole" class="form-control">
+								<option {{isSelected "Admin" profile.role}} value="Admin">Admin</option>
+								<option {{isSelected "Member" profile.role}} value="Member">Member</option>
+							</select>
+						</td>
+						<td>{{profile.balance}}</td>
+						<td>
+							<button class="btn btn-info" data-toggle="modal" data-target="#edit-user-modal{{_id}}"><i class="fa fa-pencil"></i></button>
+							<button class="delete-user btn btn-danger"><i class="fa fa-times"></i></button>
+						</td>
+					</tr>
+					{{> editUserModal}}
+				{{/each}}
+			</tbody>
+		</table>
+		{{#if userLimitReached}}
+			<div class="col-xs-12 text-center">
+				<button class="btn btn-primary load-more">Load More</button>
+			</div>
+		{{/if}}
+	{{/if}}
+</template>

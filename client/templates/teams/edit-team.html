@@ -1,0 +1,95 @@
+<template name="teamEditPage">
+	<div class="col-xs-12">
+		{{#if itemBelongsToYou}}
+			<h2>Edit {{title}}</h2>
+			<hr>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label>Team Name</label>
+					<input type="text" name="title" id="title" class="form-control" value="{{title}}"/>
+					<br>
+					<label>Team Bio</label>
+					<div id="summernote" class="body">{{#markdown}}{{body}}{{/markdown}}</div>
+					<br>
+				</div>
+				<div class="col-xs-12">
+					<h1>Hot Spot Information</h1>
+				</div>
+				<div class="form-group col-xs-6">
+				<label>Bar</label>
+				<input type="text" name="bar" id="signup-bar" class="form-control" value="{{hotspotBar}}"/>
+			</div>
+			<div class="form-group col-xs-6">
+				<label>Phone</label>
+				<input type="tel" name="phone" id="signup-phone" class="form-control" value="{{hotspotPhone}}"/>
+			</div>
+				<div class="form-group col-xs-12">
+					<label>Address</label>
+					<input type="text" name="address" id="signup-address" class="form-control" value="{{hotspotAddress}}"/>
+				</div>
+				<div class="form-group col-xs-4">
+					<label>City</label>
+					<input type="text" name="city" id="signup-city" class="form-control" value="{{hotspotCity}}"/>
+				</div>
+				<div class="form-group col-xs-4">
+					<label>State</label>
+					<input type="text" name="state" id="signup-state" class="form-control" value="{{hotspotState}}"/>
+				</div>
+				<div class="form-group col-xs-4">
+					<label>Zipcode</label>
+					<input type="text" name="zipcode" id="signup-zipcode" class="form-control" value="{{hotspotZipcode}}"/>
+				</div>
+				<div class="form-group col-xs-12">
+					<label>Country</label>
+					<input type="text" name="country" id="signup-country" class="form-control" value="{{hotspotCountry}}"/>
+				</div>
+				<div class="col-xs-12 text-center">
+					<h4>Members - {{memberCount}}/8</h4>
+					{{#each members}}
+						<div class="col-xs-4" id="{{_id}}">
+							<div class="panel panel-default">
+								<div class="panel-heading text-center">
+									<h4>{{name}}</h4>
+								</div>
+								<div class="panel-body text-center">
+									{{#if isCaptain}}
+										<button class="btn btn-warning">
+											<h4><i class="fa fa-star-o"></i></h4>
+											<h4>Captain</h4>
+										</button>
+									{{else}}
+										<button class="btn btn-info btn-sm promote-member">Promote to Captain</button>
+									{{/if}}
+									<h4>Skill Level</h4>
+									<h4>{{skillLevel}}</h4>
+								</div>
+								<div class="panel-footer text-center">
+									<button class="btn btn-danger btn-sm remove-member">Remove Member</button>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+				<div class="col-xs-12 text-center">
+					<button class="btn btn-success" data-toggle="modal" data-target="#edit-team-modal">Add Member</button>
+					<br>
+					<br>
+				</div>
+			</div>
+			<div class="col-xs-12 text-right">
+				<button onclick="goBack()" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</button>
+				<button class="btn submit btn-primary save-team">Save</button>
+				<br>
+				<br>
+			</div>
+		{{else}}
+			<h1>Whoops, this doesn't belong to you! Time to head <a href="/">home!</a></h1>
+		{{/if}}
+	</div>
+	{{> editTeamModal}}
+	<script>
+	function goBack() {
+			window.history.back();
+	}
+	</script>
+</template>

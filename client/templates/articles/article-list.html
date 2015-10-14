@@ -1,0 +1,33 @@
+<template name="articleList">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="col-sm-9">
+					<input type="text" name="searchbar" class="search-bar fa form-control" placeholder="&#xF002;    Search Articles" />
+					<br>
+					<br>
+				</div>
+				<div class="col-sm-3 text-center">
+					{{#if currentUser}}
+					<a href="/submit-article"><button class="btn btn-success">Submit Article</button></a>
+					{{else}}
+						<p>Please <a href="/sign-in">Log In</a> to submit an article.</p>
+					{{/if}}
+					<br>
+					<br>
+				</div>
+				<br>
+				<br>
+				<br>
+				{{#each articles}}
+					{{> articleItem}}
+				{{/each}}
+				{{#if articleLimitReached}}
+					<div class="col-xs-12 text-center">
+						<button class="btn btn-primary load-more">Load More</button>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>

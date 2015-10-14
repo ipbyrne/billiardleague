@@ -1,0 +1,23 @@
+<template name="articleEditPage">
+	<div class="col-xs-12">
+		{{#if itemBelongsToYou}}
+			<h2>Edit Article</h2>
+			<hr>
+			<div class="form-group">
+				<label>Title</label>
+				<input type="text" name="title" id="title" class="form-control" value="{{title}}"/>
+				<br>
+				<label>Body</label>
+				<div id="summernote" class="body">{{#markdown}}{{body}}{{/markdown}}</div>
+				<br>
+				<br>
+				<label>Thumbnail URL</label>
+				<input type="text" name="thumbnail" id="thumbnailURL" class="form-control" value="{{thumb}}"/>
+			</div>
+			<br>
+			<button class="btn submit btn-primary pull-right">Save</button>
+		{{else}}
+			<h1>Whoops, this doesn't belong to you! Time to head <a href="/">home!</a></h1>
+		{{/if}}
+	</div>
+</template>

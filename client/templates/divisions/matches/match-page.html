@@ -1,0 +1,537 @@
+<template name="matchPage">
+	<div class="container">
+		<div class="col-xs-6">
+			<h5 class="text-muted">Match ID: {{match.matchId}}</h5>
+		</div>
+		<div class="col-xs-6">
+			<h5 class="text-muted text-right">PPC Player Line-Up</h5>
+			<h5 class="text-muted text-right">{{match.matchDate}}</h5>
+		</div>
+		{{#if isAdmin}}
+			<div class="col-xs-12">
+				<br>
+				<br>
+				<div class="col-xs-6 text-center">
+					<h5>Home Team's Balance Due:</h5>
+					<h5><input class="form-control" style="width:50px; margin-left:auto; margin-right:auto;" id="home-team-balance" value="{{matchFromCollection.homeTeamBalance}}"/></h5>
+				</div>
+				<div class="col-xs-6 text-center">
+					<h5>Visiting Team's Balance Due:</h5>
+					<h5><input class="form-control" style="width:50px; margin-left:auto; margin-right:auto;" id="visitor-team-balance" value="{{matchFromCollection.visitorTeamBalance}}"/></h5>
+				</div>
+			</div>
+		{{else}}
+			<div class="col-xs-12">
+				<br>
+				<br>
+				<div class="col-xs-6 text-center">
+					<h5>Home Team's Balance Due:</h5>
+					<h5>{{matchFromCollection.homeTeamBalance}}</h5>
+				</div>
+				<div class="col-xs-6 text-center">
+					<h5>Visiting Team's Balance Due:</h5>
+					<h5>{{matchFromCollection.visitorTeamBalance}}</h5>
+				</div>
+			</div>
+		{{/if}}
+		{{#if isAdmin}}
+		<div class="col-xs-12 text-center">
+			<br>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="8" style="width:50%;" class="text-center">Race Grid</th>
+						<th colspan="1" style="width:50%;" class="text-center">Friendly Reminders</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="text-center">SL</th>
+						<th style="width:50px" class="text-center">2</th>
+						<th class="text-center">3</th>
+						<th class="text-center">4</th>
+						<th class="text-center">5</th>
+						<th class="text-center">6</th>
+						<th class="text-center">7</th>
+						<th style="width:75px;" class="text-center">8</th>
+						<th class="text-center" style="width:50%;" rowspan="9">
+							<div class="col-xs-12">
+								<ol>
+									<li>
+										Exeeding the 27 Team Cap results in a 5 point deduction for BOTH teams, in addition to a forgeit of the violating match(also for BOTH teams).</li>
+									<br>
+									<li>If nightly dues are not paid on time(NIGHTLY in team packets):<br>
+									a. Team will incur a 10-point deduction, and<br>
+									b. Will not be allowed to continue play until balance is paid in full.
+									</li>
+									<li>Steal 3 points if you lose but make it to the hill - regardless of skill level.</li>
+								</ol>
+								<div class="alert alert-danger">
+									<h5><strong>NOTE:</strong> Members experiencing financial difficulties are to seek advice from their Team Captains. Captains are ulimately responsible for timely payment of team dues. In the spirit of fairness to those who pay on time, there is <strong>NO LENIANCY</strong> from the above penalties.</h5>
+								</div>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<th class="text-center">2</th>
+						<td style="width:50px">2/2</td>
+						<td>2/2</td>
+						<td>2/3</td>
+						<td>2/4</td>
+						<td>2/4</td>
+						<td>2/5</td>
+						<td>2/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">3</th>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c2-r3" value="{{matchFromCollection.RcC2R3}}"/></td>
+						<td>2/2</td>
+						<td>2/3</td>
+						<td>2/4</td>
+						<td>2/5</td>
+						<td>2/5</td>
+						<td>2/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">4</th>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c2-r4" value="{{matchFromCollection.RcC2R4}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c3-r4" value="{{matchFromCollection.RcC3R4}}"/></td>
+						<td>3/3</td>
+						<td>3/4</td>
+						<td>3/5</td>
+						<td>3/6</td>
+						<td>2/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">5</th>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c3-r5" value="{{matchFromCollection.RcC3R5}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c4-r5" value="{{matchFromCollection.RcC4R5}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c5-r5" value="{{matchFromCollection.RcC5R5}}"/></td>
+						<td>3/3</td>
+						<td>3/4</td>
+						<td>3/5</td>
+						<td>3/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">6</th>
+						<td ><input style="width:50px" class="form-control" type="text" id="rc-c2-r6" value="{{matchFromCollection.RcC2R6}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c3-r6" value="{{matchFromCollection.RcC3R6}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c4-r6" value="{{matchFromCollection.RcC4R6}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c5-r6" value="{{matchFromCollection.RcC5R6}}"/></td>
+						<td>4/4</td>
+						<td>4/5</td>
+						<td>4/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">7</th>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c2-r7" value="{{matchFromCollection.RcC2R7}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c3-r7" value="{{matchFromCollection.RcC3R7}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c4-r7" value="{{matchFromCollection.RcC4R7}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c5-r7" value="{{matchFromCollection.RcC5R7}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c6-r7" value="{{matchFromCollection.RcC6R7}}"/></td>
+						<td>4/4</td>
+						<td>4/5</td>
+					</tr>
+					<tr>
+						<th class="text-center">8</th>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c2-r8" value="{{matchFromCollection.RcC2R8}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c3-r8" value="{{matchFromCollection.RcC3R8}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c4-r8" value="{{matchFromCollection.RcC4R8}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c5-r8" value="{{matchFromCollection.RcC5R8}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c6-r8" value="{{matchFromCollection.RcC6R8}}"/></td>
+						<td><input style="width:50px" class="form-control" type="text" id="rc-c7-r8" value="{{matchFromCollection.RcC7R8}}"/></td>
+						<td>5/5</td>
+					</tr>
+					<tr>
+						<th class="text-center" colspan="8" style="width:50%;">Games are woth 10 points. Lose but make it the hill, steal 3</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12 text-center">
+			<br>
+			<br>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center" colspan="4">Home Team: {{match.homeTeam}}</th>
+						<th class="text-center" colspan="1">VS</th>
+						<th class="text-center" colspan="4">Visiors: {{match.visitorTeam}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th rowspan="2">Points</th>
+						<th colspan="2">Player Name & Skill Level</th>
+						<th style="width:75px" rowspan="2">Race To</th>
+						<th class="text-center" colspan="1" rowspan="2">Match#</th>
+						<th style="width:75px" rowspan="2">Race To</th>
+						<th colspan="2">Player Name & Skill Level</th>
+						<th rowspan="2">Points</th>
+					</tr>
+					<tr>
+						<th style="width:50px;">SL</th>
+						<th style="width:150px;">Name</th>
+						<th style="width:150px;">Name</th>
+						<th style="width:50px;">SL</th>
+					</tr>
+					<!-- End of Header -->
+					<tr>
+						<td><input class="form-control" style="width:50px" id="home-points1" value="{{matchFromCollection.homePoints1}}"/></td>
+						<td><input class="form-control" style="width:35px" id="home-skilllevel1" value="{{matchFromCollection.homeSkillLevel1}}"/></td>
+						<td><input class="form-control" style="width:150px" id="home-player-name1" value="{{matchFromCollection.homePlayerName1}}"/></td>
+						<td><input class="form-control" style="width:75px" id="home-raceto1" value="{{matchFromCollection.homeRaceTo1}}"/></td>
+						<td>1</td>
+						<td><input class="form-control" style="width:75px" id="visitor-raceto1" value="{{matchFromCollection.visitorRaceTo1}}"/></td>
+						<td><input class="form-control" style="width:150px" id="visitor-player-name1" value="{{matchFromCollection.visitorPlayerName1}}"/></td>
+						<td><input class="form-control" style="width:35px" id="visitor-skilllevel1" value="{{matchFromCollection.visitorSkillLevel1}}"/></td>
+						<td><input class="form-control" style="width:50px" id="visitor-points1" value="{{matchFromCollection.visitorPoints1}}"/></td>
+					</tr>
+					<tr>
+						<td><input class="form-control" style="width:50px" id="home-points2" value="{{matchFromCollection.homePoints2}}"/></td>
+						<td><input class="form-control" style="width:35px" id="home-skilllevel2" value="{{matchFromCollection.homeSkillLevel2}}"/></td>
+						<td><input class="form-control" style="width:150px" id="home-player-name2" value="{{matchFromCollection.homePlayerName2}}"/></td>
+						<td><input class="form-control" style="width:75px" id="home-raceto2" value="{{matchFromCollection.homeRaceTo2}}"/></td>
+						<td>2</td>
+						<td><input class="form-control" style="width:75px" id="visitor-raceto2" value="{{matchFromCollection.visitorRaceTo2}}"/></td>
+						<td><input class="form-control" style="width:150px" id="visitor-player-name2" value="{{matchFromCollection.visitorPlayerName2}}"/></td>
+						<td><input class="form-control" style="width:35px" id="visitor-skilllevel2" value="{{matchFromCollection.visitorSkillLevel2}}"/></td>
+						<td><input class="form-control" style="width:50px" id="visitor-points2" value="{{matchFromCollection.visitorPoints2}}"/></td>
+					</tr>
+					<tr>
+						<td><input class="form-control" style="width:50px" id="home-points3" value="{{matchFromCollection.homePoints3}}"/></td>
+						<td><input class="form-control" style="width:35px" id="home-skilllevel3" value="{{matchFromCollection.homeSkillLevel3}}"/></td>
+						<td><input class="form-control" style="width:150px" id="home-player-name3" value="{{matchFromCollection.homePlayerName3}}"/></td>
+						<td><input class="form-control" style="width:75px" id="home-raceto3" value="{{matchFromCollection.homeRaceTo3}}"/></td>
+						<td>3</td>
+						<td><input class="form-control" style="width:75px" id="visitor-raceto3" value="{{matchFromCollection.visitorRaceTo3}}"/></td>
+						<td><input class="form-control" style="width:150px" id="visitor-player-name3" value="{{matchFromCollection.visitorPlayerName3}}"/></td>
+						<td><input class="form-control" style="width:35px" id="visitor-skilllevel3" value="{{matchFromCollection.visitorSkillLevel3}}"/></td>
+						<td><input class="form-control" style="width:50px" id="visitor-points3" value="{{matchFromCollection.visitorPoints3}}"/></td>
+					</tr>
+					<tr>
+						<td><input class="form-control" style="width:50px" id="home-points4" value="{{matchFromCollection.homePoints4}}"/></td>
+						<td><input class="form-control" style="width:35px" id="home-skilllevel4" value="{{matchFromCollection.homeSkillLevel4}}"/></td>
+						<td><input class="form-control" style="width:150px" id="home-player-name4" value="{{matchFromCollection.homePlayerName4}}"/></td>
+						<td><input class="form-control" style="width:75px" id="home-raceto4" value="{{matchFromCollection.homeRaceTo4}}"/></td>
+						<td>4</td>
+						<td><input class="form-control" style="width:75px" id="visitor-raceto4" value="{{matchFromCollection.visitorRaceTo4}}"/></td>
+						<td><input class="form-control" style="width:150px" id="visitor-player-name4" value="{{matchFromCollection.visitorPlayerName4}}"/></td>
+						<td><input class="form-control" style="width:35px" id="visitor-skilllevel4" value="{{matchFromCollection.visitorSkillLevel4}}"/></td>
+						<td><input class="form-control" style="width:50px" id="visitor-points4" value="{{matchFromCollection.visitorPoints4}}"/></td>
+					</tr>
+					<tr>
+						<td><input class="form-control" style="width:50px" id="home-points5" value="{{matchFromCollection.homePoints5}}"/></td>
+						<td><input class="form-control" style="width:35px" id="home-skilllevel5" value="{{matchFromCollection.homeSkillLevel5}}"/></td>
+						<td><input class="form-control" style="width:150px" id="home-player-name5" value="{{matchFromCollection.homePlayerName5}}"/></td>
+						<td><input class="form-control" style="width:75px" id="home-raceto5" value="{{matchFromCollection.homeRaceTo5}}"/></td>
+						<td>5</td>
+						<td><input class="form-control" style="width:75px" id="visitor-raceto5" value="{{matchFromCollection.visitorRaceTo5}}"/></td>
+						<td><input class="form-control" style="width:150px" id="visitor-player-name5" value="{{matchFromCollection.visitorPlayerName5}}"/></td>
+						<td><input class="form-control" style="width:35px" id="visitor-skilllevel5" value="{{matchFromCollection.visitorSkillLevel5}}"/></td>
+						<td><input class="form-control" style="width:50px" id="visitor-points5" value="{{matchFromCollection.visitorPoints5}}"/></td>
+					</tr>
+					<tr>
+						<td><input class="form-control" style="width:50px" id="home-points-total" value="{{matchFromCollection.homePointsTotal}}"/></td>
+						<td><input class="form-control" style="width:35px" id="home-skilllevel-total" value="{{matchFromCollection.homeSkillLevelTotal}}"/></td>
+						<td colspan="5" class="text-center"><i class="fa fa-arrow-left"></i> Totals <i class="fa fa-arrow-right"></i></td>
+						<td><input class="form-control" style="width:35px" id="visitor-skilllevel-total" value="{{matchFromCollection.visitorSkillLevelTotal}}"/></td>
+						<td><input class="form-control" style="width:50px" id="visitor-points-total" value="{{matchFromCollection.visitorPointsTotal}}"/></td>
+					</tr>
+					<tr>
+						<td style="width:50px"><input type="text" class="form-control" id="home-captain-initials" value="{{matchFromCollection.homeCaptainInitials}}"/></td>
+						<td colspan="7" class="text-center"><i class="fa fa-arrow-left"></i> Captain Initials <i class="fa fa-arrow-right"></i></td>
+						<td style="width:50px"><input type="text" class="form-control" id="visitor-captain-initials" value="{{matchFromCollection.visitorCaptainInitials}}"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12">
+			<br>
+			<h2 class="text-center">Notes/Comments</h2>
+			<h3 class="text-center">(Eg. Changes to rosters, FYIs, tracking, etc.)</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th style="width:50%;">Home Team</th>
+						<th style="width:50%;">Visitors</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><textarea id="home-team-notes" class="form-control" value="{{matchFromCollection.homeTeamNotes}}"></textarea></td>
+						<td><textarea id="visitor-team-notes" class="form-control" value="{{matchFromCollection.visitorTeamNotes}}"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="col-xs-12 text-center">
+				<button class="btn btn-success save-match">Save</button>
+			</div>
+		</div>
+		<div class="col-xs-12 text-center">
+			<h1 class="text-center">Match Score Sheets</h1>
+			<a href="/submit-scoresheet"><button class="btn btn-success">Create an 8-ball Score Sheet</button></a>
+					<a href="/submit-scoresheet2"><button class="btn btn-success">Create a 9-ball Score Sheet</button></a>
+		</div>
+		{{else}}
+			<div class="col-xs-12 text-center">
+			<br>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="8" style="width:50%;" class="text-center">Race Grid</th>
+						<th colspan="1" style="width:50%;" class="text-center">Friendly Reminders</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="text-center">SL</th>
+						<th style="width:50px" class="text-center">2</th>
+						<th class="text-center">3</th>
+						<th class="text-center">4</th>
+						<th class="text-center">5</th>
+						<th class="text-center">6</th>
+						<th class="text-center">7</th>
+						<th style="width:75px;" class="text-center">8</th>
+						<th class="text-center" style="width:50%;" rowspan="9">
+							<div class="col-xs-12">
+								<ol>
+									<li>
+										Exeeding the 27 Team Cap results in a 5 point deduction for BOTH teams, in addition to a forgeit of the violating match(also for BOTH teams).</li>
+									<br>
+									<li>If nightly dues are not paid on time(NIGHTLY in team packets):<br>
+									a. Team will incur a 10-point deduction, and<br>
+									b. Will not be allowed to continue play until balance is paid in full.
+									</li>
+									<li>Steal 3 points if you lose but make it to the hill - regardless of skill level.</li>
+								</ol>
+								<div class="alert alert-danger">
+									<h5><strong>NOTE:</strong> Members experiencing financial difficulties are to seek advice from their Team Captains. Captains are ulimately responsible for timely payment of team dues. In the spirit of fairness to those who pay on time, there is <strong>NO LENIANCY</strong> from the above penalties.</h5>
+								</div>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<th class="text-center">2</th>
+						<td style="width:50px">2/2</td>
+						<td>2/2</td>
+						<td>2/3</td>
+						<td>2/4</td>
+						<td>2/4</td>
+						<td>2/5</td>
+						<td>2/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">3</th>
+						<td>{{matchFromCollection.RcC2R3}}</td>
+						<td>2/2</td>
+						<td>2/3</td>
+						<td>2/4</td>
+						<td>2/5</td>
+						<td>2/5</td>
+						<td>2/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">4</th>
+						<td>{{matchFromCollection.RcC2R4}}</td>
+						<td>{{matchFromCollection.RcC3R4}}</td>
+						<td>3/3</td>
+						<td>3/4</td>
+						<td>3/5</td>
+						<td>3/6</td>
+						<td>2/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">5</th>
+						<td>{{matchFromCollection.RcC3R5}}</td>
+						<td>{{matchFromCollection.RcC4R5}}</td>
+						<td>{{matchFromCollection.RcC5R5}}</td>
+						<td>3/3</td>
+						<td>3/4</td>
+						<td>3/5</td>
+						<td>3/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">6</th>
+						<td >{{matchFromCollection.RcC2R6}}</td>
+						<td>{{matchFromCollection.RcC3R6}}</td>
+						<td>{{matchFromCollection.RcC4R6}}</td>
+						<td>{{matchFromCollection.RcC5R6}}</td>
+						<td>4/4</td>
+						<td>4/5</td>
+						<td>4/6</td>
+					</tr>
+					<tr>
+						<th class="text-center">7</th>
+						<td>{{matchFromCollection.RcC2R7}}</td>
+						<td>{{matchFromCollection.RcC3R7}}</td>
+						<td>{{matchFromCollection.RcC4R7}}</td>
+						<td>{{matchFromCollection.RcC5R7}}</td>
+						<td>{{matchFromCollection.RcC6R7}}</td>
+						<td>4/4</td>
+						<td>4/5</td>
+					</tr>
+					<tr>
+						<th class="text-center">8</th>
+						<td>{{matchFromCollection.RcC2R8}}</td>
+						<td>{{matchFromCollection.RcC3R8}}</td>
+						<td>{{matchFromCollection.RcC4R8}}</td>
+						<td>{{matchFromCollection.RcC5R8}}</td>
+						<td>{{matchFromCollection.RcC6R8}}</td>
+						<td>{{matchFromCollection.RcC7R8}}</td>
+						<td>5/5</td>
+					</tr>
+					<tr>
+						<th class="text-center" colspan="8" style="width:50%;">Games are woth 10 points. Lose but make it the hill, steal 3</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12 text-center">
+			<br>
+			<br>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center" colspan="4">Home Team: {{match.homeTeam}}</th>
+						<th class="text-center" colspan="1">VS</th>
+						<th class="text-center" colspan="4">Visiors: {{match.visitorTeam}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th rowspan="2">Points</th>
+						<th colspan="2">Player Name & Skill Level</th>
+						<th style="width:75px" rowspan="2">Race To</th>
+						<th class="text-center" colspan="1" rowspan="2">Match#</th>
+						<th style="width:75px" rowspan="2">Race To</th>
+						<th colspan="2">Player Name & Skill Level</th>
+						<th rowspan="2">Points</th>
+					</tr>
+					<tr>
+						<th style="width:50px;">SL</th>
+						<th style="width:150px;">Name</th>
+						<th style="width:150px;">Name</th>
+						<th style="width:50px;">SL</th>
+					</tr>
+					<!-- End of Header -->
+					<tr>
+						<td>{{matchFromCollection.homePoints1}}</td>
+						<td>{{matchFromCollection.homeSkillLevel1}}</td>
+						<td>{{matchFromCollection.homePlayerName1}}</td>
+						<td>{{matchFromCollection.homeRaceTo1}}</td>
+						<td>1</td>
+						<td>{{matchFromCollection.visitorRaceTo1}}</td>
+						<td>{{matchFromCollection.visitorPlayerName1}}</td>
+						<td>{{matchFromCollection.visitorSkillLevel1}}</td>
+						<td>{{matchFromCollection.visitorPoints1}}</td>
+					</tr>
+					<tr>
+						<td>{{matchFromCollection.homePoints2}}</td>
+						<td>{{matchFromCollection.homeSkillLevel2}}</td>
+						<td>{{matchFromCollection.homePlayerName2}}</td>
+						<td>{{matchFromCollection.homeRaceTo2}}</td>
+						<td>2</td>
+						<td>{{matchFromCollection.visitorRaceTo2}}</td>
+						<td>{{matchFromCollection.visitorPlayerName2}}</td>
+						<td>{{matchFromCollection.visitorSkillLevel2}}</td>
+						<td>{{matchFromCollection.visitorPoints2}}</td>
+					</tr>
+					<tr>
+						<td>{{matchFromCollection.homePoints3}}</td>
+						<td>{{matchFromCollection.homeSkillLevel3}}</td>
+						<td>{{matchFromCollection.homePlayerName3}}</td>
+						<td>{{matchFromCollection.homeRaceTo3}}</td>
+						<td>3</td>
+						<td>{{matchFromCollection.visitorRaceTo3}}</td>
+						<td>{{matchFromCollection.visitorPlayerName3}}</td>
+						<td>{{matchFromCollection.visitorSkillLevel3}}</td>
+						<td>{{matchFromCollection.visitorPoints3}}</td>
+					</tr>
+					<tr>
+						<td>{{matchFromCollection.homePoints4}}</td>
+						<td>{{matchFromCollection.homeSkillLevel4}}</td>
+						<td>{{matchFromCollection.homePlayerName4}}</td>
+						<td>{{matchFromCollection.homeRaceTo4}}</td>
+						<td>4</td>
+						<td>{{matchFromCollection.visitorRaceTo4}}</td>
+						<td>{{matchFromCollection.visitorPlayerName4}}</td>
+						<td>{{matchFromCollection.visitorSkillLevel4}}</td>
+						<td>{{matchFromCollection.visitorPoints4}}</td>
+					</tr>
+					<tr>
+						<td>{{matchFromCollection.homePoints5}}</td>
+						<td>{{matchFromCollection.homeSkillLevel5}}</td>
+						<td>{{matchFromCollection.homePlayerName5}}</td>
+						<td>{{matchFromCollection.homeRaceTo5}}</td>
+						<td>5</td>
+						<td>{{matchFromCollection.visitorRaceTo5}}</td>
+						<td>{{matchFromCollection.visitorPlayerName5}}</td>
+						<td>{{matchFromCollection.visitorSkillLevel5}}</td>
+						<td>{{matchFromCollection.visitorPoints5}}</td>
+					</tr>
+					<tr>
+						<td>{{matchFromCollection.homePointsTotal}}</td>
+						<td>{{matchFromCollection.homeSkillLevelTotal}}</td>
+						<td colspan="5" class="text-center"><i class="fa fa-arrow-left"></i> Totals <i class="fa fa-arrow-right"></i></td>
+						<td>{{matchFromCollection.visitorSkillLevelTotal}}</td>
+						<td>{{matchFromCollection.visitorPointsTotal}}</td>
+					</tr>
+					<tr>
+						<td style="width:50px">{{matchFromCollection.homeCaptainInitials}}</td>
+						<td colspan="7" class="text-center"><i class="fa fa-arrow-left"></i> Captain Initials <i class="fa fa-arrow-right"></i></td>
+						<td style="width:50px">{{matchFromCollection.visitorCaptainInitials}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12">
+			<br>
+			<h2 class="text-center">Notes/Comments</h2>
+			<h3 class="text-center">(Eg. Changes to rosters, FYIs, tracking, etc.)</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th style="width:50%;">Home Team</th>
+						<th style="width:50%;">Visitors</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{matchFromCollection.homeTeamNotes}}</td>
+						<td>{{matchFromCollection.visitorTeamNotes}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12 text-center">
+			<h1 class="text-center">Match Score Sheets</h1>
+		</div>
+		{{/if}}
+		<br>
+		<br>
+		<div class="col-xs-12">
+			<br>
+			<br>
+			{{#each matchScoreSheets}}
+			<div class="col-xs-6">
+				<a href="/scoresheets/{{_id}}" target="_blank">
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+							<h5>{{game}}</h5>
+							<h4>{{homePlayer}} vs {{visitorPlayer}}</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			{{/each}}
+		</div>
+		<div class="col-xs-12">
+			<br>
+			<br>
+			<a href="/divisions/{{divisionId}}"><button class="btn btn-sm btn-warning edit-scoresheet"><i class="fa fa-arrow-left"></i> Back</button></a>
+			<br>
+			<br>
+		</div>
+	</div>
+</template>

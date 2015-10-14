@@ -1,0 +1,41 @@
+<template name="submitDivision">
+	<div class="col-xs-12">
+		{{#if isAdmin}}
+			<h2>Create a Division</h2>
+			<hr>
+			<div class="form-group">
+				<div class="col-xs-6">
+					<label>Division Name</label>
+					<input type="text" name="title" id="title" class="form-control" value="{{title}}"/>
+					<br>
+				</div>
+				<div class="col-xs-2">
+					<label>Rounds</label>
+					<input type="number" name="rounds" id="rounds" class="form-control" value="{{roundsNumber}}"/>
+				</div>
+				<div class="col-xs-4">
+					<label>Start Date</label>
+					<input type="date" name="date" id="date" class="form-control" value="{{startDate}}"/>
+				</div>
+				<div class="col-xs-12">
+					<label>Division Description</label>
+					<div id="summernote" class="body">{{#markdown}}{{body}}{{/markdown}}</div>
+					<br>
+				</div>
+			</div>
+			<div class="col-xs-12 text-right">
+				<button class="btn btn-danger" onclick="goBack()"><i class="fa fa-arrow-left"></i> Back</button>
+				<button class="btn submit btn-primary save-division">Save</button>
+				<br>
+				<br>
+			</div>
+		{{else}}
+			<h1>Whoops, this doesn't belong to you! Time to head <a href="/">home!</a></h1>
+		{{/if}}
+	</div>
+	<script>
+	function goBack() {
+			window.history.back();
+	}
+	</script>
+</template>

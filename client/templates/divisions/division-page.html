@@ -1,0 +1,112 @@
+<template name="divisionPage">
+	<div class="col-xs-12">
+		<div class="col-sm-8">
+			<h1>{{title}}</h1>
+			<h2>Begins: {{startDate}}</h2>
+		</div>
+		<div class="col-xs-12">
+			<hr>
+		</div>
+		<div class="col-xs-12">
+			{{#markdown}}{{body}}{{/markdown}}
+			<hr>
+		</div>
+		{{#if itemBelongsToYou}}
+			<div class="col-xs-12 well">
+
+					<div class="btn-group pull-right">
+						<a><button class="btn btn-success" data-toggle="modal" data-target="#edit-division-modal">Add Teams</button></a>
+						<a href="{{pathFor 'divisionEditPage'}}"><button class="btn btn-warning edit-article">Edit</button></a>
+						<a href="#"><button class="btn btn-danger delete-division">Delete</button></a>
+					</div>
+				<button class="robin-test btn btn-success btn-sm">Generate Division Schedule</button>
+				<br>
+				<span class="text-muted"><small>WARNING: DO NOT GENERATE SCHEDULE UNTIL TEAMS AND ROUNDS ARE SPECIFIED!</small></span>
+			</div>
+		{{/if}}
+		<div class="col-xs-12">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Team</th>
+						<th>Bar</th>
+						<th>Address</th>
+						<th>Phone</th>
+						<th>Captain</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#each teamsInDivision}}
+					<tr>
+						<td>{{title}}</td>
+						<td>{{hotspotBar}}</td>
+						<td>{{hotspotAddress}}, {{hotspotCity}}, {{hotspotState}}, {{hotspotZipcode}}</td>
+						<td>{{hotspotPhone}}</td>
+						<td>{{captain}}</td>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12">
+			<h1 class="text-center">Division Schedule</h1>
+		</div>
+		<div class="col-xs-6 text-center">
+			<h2>Teams</h2>
+			<h2>{{teamCount}}</h2>
+		</div>
+		<div class="col-xs-6 text-center">
+			<h2>Rounds</h2>
+			<h2>{{roundsNumber}}</h2>
+		</div>
+		<div class="col-xs-12">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Week</th>
+						<th class="text-center">Date</th>
+						<th colspan="{{colSpan}}">GET TO SHOOTING!</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each rounds}}
+						{{#each matches}}
+						<tr>
+							<td>{{[0].[2]}}</td>
+							<td>{{[0].[3]}}</td>
+							{{#each this}}
+								<td>{{[0]}} at {{[1]}}</td>
+							{{/each}}
+						</tr>
+						{{/each}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-12 text-center">
+			<h1>Matches</h1>
+			{{#each rounds}}
+				{{#each matches}}
+					{{#each this}}
+						<div class="col-sm-6">
+							<a href="/matches/{{[4].matchId}}" class="match-panel">
+							<div class="panel panel-default">
+								<div class="text-center">
+									<h3>Week {{[4].week}}</h3>
+								</div>
+								<div class="panel-body">
+									<h4>Match ID: {{[4].matchId}}</h4>
+									<h4>{{[0]}} at {{[1]}}</h4>
+									<h4>Score:</h4>
+									<h4>{{[4].homePointsTotal}} - {{[4].visitorPointsTotal}}</h4>
+								</div>
+							</div>
+							</a>
+						</div>
+					{{/each}}
+				{{/each}}
+			{{/each}}
+		</div>
+		{{> editDivisionModal}}
+	</div>
+</template>

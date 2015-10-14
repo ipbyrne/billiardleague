@@ -1,0 +1,94 @@
+<template name="scoreSheetPage">
+	<div class="col-xs-12">
+		<div class="col-xs-6">
+			<h5 class="text-muted">Match ID: {{matchId}}</h5>
+		</div>
+		<div class="col-xs-6">
+			<h5 class="text-muted text-right">PPC {{game}} Score Sheet</h5>
+			<h5 class="text-muted text-right">{{submitted}}</h5>
+		</div>
+		<div class="scoresheet-window">
+			<br>
+			<br>
+				<table class="table table-bordered" style="width:100%; white-space: nowrap">
+					<thead>
+						<tr>
+							<th colspan="13">
+								<p>HOME</p>
+								<p>Player: {{homePlayer}}</p>
+							</th>
+							<th colspan="3">
+								<p>RACE</p>
+								<p>To: {{homeRaceTo}}</p>
+							</th>
+							<th colspan="2">
+								<p>V S</p>
+							</th>
+							<th colspan="13">
+								<p>Visitor</p>
+								<p>Player {{visitorPlayer}}</p>
+							</th>
+							<th colspan="3">
+								<p>RACE</p>
+								<p>To: {{visitorRaceTo}}</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1">#</td>
+							<td colspan="1">Player Name</td>
+							<td colspan="1">Break</td>
+							<td colspan="30">GAME DATA</td>
+							<td colspan="1">WIN</td>
+						</tr>
+						{{#each row}}
+							<tr>
+								<td>{{gameNumber}}</td>
+								<td>Home Player<br> Visitor Player</td>
+								<td>{{break}}</td>
+								<td>{{gd11}}<br>{{gd12}}</td>
+								<td>{{gd21}}<br>{{gd22}}</td>
+								<td>{{gd31}}<br>{{gd32}}</td>
+								<td>{{gd41}}<br>{{gd42}}</td>
+								<td>{{gd51}}<br>{{gd52}}</td>
+								<td>{{gd61}}<br>{{gd62}}</td>
+								<td>{{gd71}}<br>{{gd72}}</td>
+								<td>{{gd81}}<br>{{gd82}}</td>
+								<td>{{gd91}}<br>{{gd92}}</td>
+								<td>{{gd101}}<br>{{gd102}}</td>
+								<td>{{gd111}}<br>{{gd112}}</td>
+								<td>{{gd121}}<br>{{gd122}}</td>
+								<td>{{gd131}}<br>{{gd132}}</td>
+								<td>{{gd141}}<br>{{gd142}}</td>
+								<td>{{gd151}}<br>{{gd152}}</td>
+								<td>{{gd161}}<br>{{gd162}}</td>
+								<td>{{gd171}}<br>{{gd172}}</td>
+								<td>{{gd181}}<br>{{gd182}}</td>
+								<td>{{gd191}}<br>{{gd192}}</td>
+								<td>{{gd201}}<br>{{gd202}}</td>
+								<td>{{gd211}}<br>{{gd212}}</td>
+								<td>{{gd221}}<br>{{gd222}}</td>
+								<td>{{gd231}}<br>{{gd232}}</td>
+								<td>{{gd241}}<br>{{gd242}}</td>
+								<td>{{gd251}}<br>{{gd252}}</td>
+								<td>{{gd261}}<br>{{gd262}}</td>
+								<td>{{gd271}}<br>{{gd272}}</td>
+								<td>{{gd281}}<br>{{gd282}}</td>
+								<td>{{gd291}}<br>{{gd292}}</td>
+								<td>{{gd301}}<br>{{gd302}}</td>
+								<td>{{win1}}<br>{{win2}}</td>
+							</tr>
+						{{/each}}
+					</tbody>
+			</table>
+		</div>
+		{{#if isAdmin}}
+		<div class="col-xs-12 text-right">
+			<button class="btn btn-sm btn-danger delete-scoresheet"><i class="fa fa-trash"></i></button>
+			<br>
+			<br>
+		</div>
+		{{/if}}
+	</div>
+</template>

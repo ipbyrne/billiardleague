@@ -1,0 +1,39 @@
+<template name="addHomePlayerModal2">
+	<div class="modal fade" id="add-home-player-modal2" tabindex="-1" role="dialog" aria-labelledby="send-invitation-modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+					<input type="text" name="searchbar" class="search-bar fa form-control" placeholder="&#xF002;    Search Users" />
+        </div>
+        <form id="edit-team-form">
+          <div class="modal-body row">
+        	{{#each users}}
+						<div class="col-xs-4" id="{{_id}}">
+							<div class="panel panel-default">
+								<div class="panel-heading text-center">
+									<h4>{{profile.name}}</h4>
+								</div>
+								<div class="panel-body text-center">
+									<h4>Skill Level</h4>
+									<h4>{{profile.skillLevel}}</h4>
+								</div>
+								<div class="panel-footer text-center">
+									<button class="btn btn-success btn-sm add-player">Add Home Player</button>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+					{{#if userLimitReached}}
+						<div class="col-xs-12 text-center">
+							<button class="btn btn-primary load-more">Load More</button>
+						</div>
+					{{/if}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

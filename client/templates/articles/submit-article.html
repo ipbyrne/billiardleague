@@ -1,0 +1,21 @@
+<template name="submitArticle">
+	<div class="col-xs-12">
+		{{#if currentUser}}
+			<div class="form-group">
+				<label>Title</label>
+				<input type="text" name="title" id="title" class="form-control"/>
+				<br>
+				<label>Body</label>
+				<div id="summernote" class="body"></div>
+				<br>
+				<br>
+				<label>Thumbnail URL</label>
+				<input type="text" name="thumbnail" id="thumbnailURL" class="form-control"/>
+			</div>
+			<br>
+			<button class="btn submit btn-primary pull-right">Submit</button>
+		{{else}}
+			<h1>Whoops, you must be <a href="/sign-in">Logged In</a> to do this!</h1>
+		{{/if}}
+	</div>
+</template>

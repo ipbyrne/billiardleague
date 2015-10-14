@@ -1,0 +1,59 @@
+<template name="articlePage">
+	<div class="col-xs-12">
+		<div class="col-sm-10">
+			<h1>{{title}}</h1>
+			<br>
+			<span><a href="{{pathFor 'userPage'}}">by {{useremail}}</a></span>
+		</div>
+		<div class="col-sm-2 text-center">
+			<br>
+			<img class="img-thumbnail" src="{{thumb}}"/>
+		</div>
+		<div class="col-xs-12">
+			<hr>
+		</div>
+		<div class="col-xs-12">
+			{{#markdown}}{{body}}{{/markdown}}
+			<hr>
+		</div>
+		<div class="col-xs-12 well">
+			<div id="user" class="hide">{{useremail}}</div>
+			<h4>
+				<img class="img-circle" width="50" src="{{gravatarImgUrl}}" />
+				<a class="article-item-name">by {{useremail}}</a>   <button class="article-item-upvote btn btn-default"><i class="fa fa-heart"></i> {{likes}}</button>   <button class="article-item-comment btn btn-default" href="#"><i class="fa fa-comment"></i> {{commentCount}}</button>   <span class="article-item-date">{{submitted}}</span>
+					{{#if itemBelongsToYou}}
+						<div class="btn-group pull-right">
+							<a href="{{pathFor 'articleEditPage'}}"><button class="btn btn-warning edit-article">Edit</button></a>
+							<a href="#"><button class="btn btn-danger delete-article">Delete</button></a>
+						</div>
+					{{/if}}
+			</h4>
+		</div>
+		<div class="col-xs-12">
+			<h3>Comments</h3>
+			{{#each comments}}
+				{{> articleCommentItem}}
+			{{/each}}
+		</div>
+		<!-- Show If Comments Are Subscribed with Pagination 
+		<div class="col-xs-12 text-center">
+			<br>
+			<br>
+			{{#if commentLimitReached}}
+				<button class="btn btn-primary load-more">Load More</button>
+			{{/if}}
+			<br>
+			<br>
+		</div>
+		-->
+		<div class="col-xs-12">
+			{{#if currentUser}}
+				{{> articleCommentSubmit}}
+			{{else}}
+				<span>You must be <a href="/sign-in"><strong>logged</strong></a> in to comment.</span>
+			{{/if}}	
+			<br>
+			<br>
+		</div>
+	</div>
+</template>

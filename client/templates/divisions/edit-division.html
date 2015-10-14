@@ -1,0 +1,62 @@
+<template name="divisionEditPage">
+	<div class="col-xs-12">
+		{{#if itemBelongsToYou}}
+			<h2>Edit {{title}}</h2>
+			<hr>
+			<div class="form-group">
+				<div class="col-xs-6">
+					<label>Division Name</label>
+					<input type="text" name="title" id="title" class="form-control" value="{{title}}"/>
+					<br>
+				</div>
+				<div class="col-xs-2">
+					<label>Rounds</label>
+					<input type="number" name="rounds" id="rounds" class="form-control" value="{{roundsNumber}}"/>
+				</div>
+				<div class="col-xs-4">
+					<label>Start Date</label>
+					<input type="date" name="date" id="date" class="form-control" value="{{startDate}}"/>
+				</div>
+				<div class="col-xs-12">
+					<label>Division Description</label>
+					<div id="summernote" class="body">{{#markdown}}{{body}}{{/markdown}}</div>
+					<br>
+				</div>
+				<div class="col-xs-12 text-center">
+					<h4>Teams - {{teamCount}}</h4>
+					{{#each teams}}
+						<div class="col-xs-4" id="{{name}}">
+							<div class="panel panel-default">
+								<div class="panel-body text-center">
+									<h4>{{name}}</h4>
+								</div>
+								<div class="panel-footer text-center">
+									<button class="btn btn-danger btn-sm remove-team">Remove Team</button>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+				<div class="col-xs-12 text-center">
+					<button class="btn btn-success" data-toggle="modal" data-target="#edit-division-modal">Add Teams</button>
+					<br>
+					<br>
+				</div>
+			</div>
+			<div class="col-xs-12 text-right">
+				<button onclick="goBack()" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</button>
+				<button class="btn submit btn-primary save-division">Save</button>
+				<br>
+				<br>
+			</div>
+		{{else}}
+			<h1>Whoops, this doesn't belong to you! Time to head <a href="/">home!</a></h1>
+		{{/if}}
+	</div>
+	{{> editDivisionModal}}
+	<script>
+	function goBack() {
+			window.history.back();
+	}
+	</script>
+</template>
