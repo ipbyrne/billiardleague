@@ -3,7 +3,7 @@
 		{{#if isAdmin}}
 			<h2>Create an 8-ball Score Sheet</h2>
 			<hr>
-		
+			<!--
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -69,6 +69,7 @@
 					</tr>
 				</tbody>
 			</table>
+			-->
 			<div class="co-xs-12 text-center" id="score-type">
 				<h2>Match: {{match.matchId}}</h2>
 			</div>
@@ -85,7 +86,7 @@
 								<p>Race</p>
 								<p>To: <input type="text" name="home-race" id="home-race" class="form-control"  /></p>
 							</th>
-							<th colspan="2" class="text-center">
+							<th colspan="3" class="text-center">
 								<p>V S</p>
 							</th>
 							<th colspan="13">
@@ -104,6 +105,7 @@
 							<td colspan="1">#</td>
 							<td colspan="1">Player Name</td>
 							<td colspan="1">Break</td>
+							<td colspan="1">H/L</td>
 							<td colspan="30">GAME DATA</td>
 							<td colspan="1">WIN</td>
 						</tr>
@@ -122,6 +124,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-1">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-1">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->
@@ -788,6 +803,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-2">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-2">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row2">
@@ -1450,6 +1478,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-3">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-3">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->
@@ -2116,6 +2157,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-4">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-4">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row4">
@@ -2778,6 +2832,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-5">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-5">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->
@@ -3444,6 +3511,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-6">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-6">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row6">
@@ -4106,6 +4186,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-7">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-7">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->
@@ -4772,6 +4865,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-8">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-8">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row8">
@@ -5434,6 +5540,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-9">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl1-9">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->
@@ -6100,6 +6219,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-10">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-10">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row10">
@@ -6762,6 +6894,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-11">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-11">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->
@@ -7428,6 +7573,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-12">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-12">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row12">
@@ -8092,6 +8250,19 @@
 									<option>E</option>
 								</select>
 							</td>
+							<td>
+								<select id="hl1-13">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-13">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+							</td>
 							<!-- Game Data Rows -->
 							<td colspan="1">
 								<select id="game-data1-1-row13">
@@ -8754,6 +8925,19 @@
 									<option>N</option>
 									<option>F</option>
 									<option>E</option>
+								</select>
+							</td>
+							<td>
+								<select id="hl1-14">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
+								</select>
+								<br>
+								<select id="hl2-14">
+									<option></option>
+									<option>H</option>
+									<option>L</option>
 								</select>
 							</td>
 							<!-- Game Data Rows -->

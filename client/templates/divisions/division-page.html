@@ -1,8 +1,9 @@
 <template name="divisionPage">
+	{{#if currentUser}}
 	<div class="col-xs-12">
 		<div class="col-sm-8">
 			<h1>{{title}}</h1>
-			<h2>Begins: {{startDate}}</h2>
+			<h2>Begins: {{formatDate startDate}}</h2>
 		</div>
 		<div class="col-xs-12">
 			<hr>
@@ -25,29 +26,76 @@
 			</div>
 		{{/if}}
 		<div class="col-xs-12">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Team</th>
-						<th>Bar</th>
-						<th>Address</th>
-						<th>Phone</th>
-						<th>Captain</th>
-					</tr>
-				</thead>
-				<tbody>
-				{{#each teamsInDivision}}
-					<tr>
-						<td>{{title}}</td>
-						<td>{{hotspotBar}}</td>
-						<td>{{hotspotAddress}}, {{hotspotCity}}, {{hotspotState}}, {{hotspotZipcode}}</td>
-						<td>{{hotspotPhone}}</td>
-						<td>{{captain}}</td>
-					</tr>
-				{{/each}}
-				</tbody>
-			</table>
+			
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#home">Roster</a></li>
+				<li><a data-toggle="tab" href="#menu1">Leaderboard</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+					<br>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Team</th>
+								<th>Bar</th>
+								<th>Address</th>
+								<th>Phone</th>
+								<th>Captain</th>
+								<th>Points</th>
+							</tr>
+						</thead>
+						<tbody>
+						{{#each teams}}
+							<tr>
+								<td>{{indexer @index}}</td>
+								<td>{{name}}</td>
+								<td>{{hotspotBar}}</td>
+								<td>{{hotspotAddress}}, {{hotspotCity}}, {{hotspotState}}, {{hotspotZipcode}}</td>
+								<td>{{hotspotPhone}}</td>
+								<td>{{captain}}</td>
+								<td>{{points}}</td>
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+				<div id="menu1" class="tab-pane fade">
+					<br>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Team</th>
+								<th>Bar</th>
+								<th>Address</th>
+								<th>Phone</th>
+								<th>Captain</th>
+								<th>Points</th>
+							</tr>
+						</thead>
+						<tbody>
+						{{#each teamsInDivision}}
+							<tr>
+								<td>{{indexer @index}}</td>
+								<td>{{name}}</td>
+								<td>{{hotspotBar}}</td>
+								<td>{{hotspotAddress}}, {{hotspotCity}}, {{hotspotState}}, {{hotspotZipcode}}</td>
+								<td>{{hotspotPhone}}</td>
+								<td>{{captain}}</td>
+								<td>{{points}}</td>
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
+		
+		
+		
 		<div class="col-xs-12">
 			<h1 class="text-center">Division Schedule</h1>
 		</div>
@@ -59,7 +107,12 @@
 			<h2>Rounds</h2>
 			<h2>{{roundsNumber}}</h2>
 		</div>
-		<div class="col-xs-12">
+		<div class="col-xs-12 text-right">
+			<button class="btn btn-success btn-sm" onclick="PrintElem('#schedule-div')">Print Schedule</button>
+			<br>
+			<br>
+		</div>
+		<div class="col-xs-12" id="schedule-div">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -73,9 +126,9 @@
 						{{#each matches}}
 						<tr>
 							<td>{{[0].[2]}}</td>
-							<td>{{[0].[3]}}</td>
+							<td>{{formatDate [0].[3]}} {{[0].divisionCounter}}</td>
 							{{#each this}}
-								<td>{{[0]}} at {{[1]}}</td>
+								<td><a href="/matches/{{[4].matchId}}" class="match-panel">{{[0]}} at {{[1]}}</a></td>
 							{{/each}}
 						</tr>
 						{{/each}}
@@ -83,6 +136,7 @@
 				</tbody>
 			</table>
 		</div>
+		<!--
 		<div class="col-xs-12 text-center">
 			<h1>Matches</h1>
 			{{#each rounds}}
@@ -107,6 +161,45 @@
 				{{/each}}
 			{{/each}}
 		</div>
+		-->
 		{{> editDivisionModal}}
+	</div>
+	{{else}}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Please log in to the view page.</h1>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	<script type="text/javascript">
+
+	function PrintElem(elem)
+	{
+			Popup($(elem).html());
+	}
+
+	function Popup(data) 
+	{
+			var mywindow = window.open('', 'Division Schedule', 'height=400,width=600');
+			mywindow.document.write('<html><head><title>Division Schedule</title>');
+			/*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+			mywindow.document.write('</head><body >');
+			mywindow.document.write(data);
+			mywindow.document.write('</body></html>');
+
+			mywindow.document.close(); // necessary for IE >= 10
+			mywindow.focus(); // necessary for IE >= 10
+
+			mywindow.print();
+			mywindow.close();
+
+			return true;
+	}
+
+	</script>
+	<div class="hide">
+		{{teamsInDivision}}
 	</div>
 </template>

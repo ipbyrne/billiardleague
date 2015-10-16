@@ -19,11 +19,12 @@ Template.divisionPage.events({
 		var divisionId = this._id;
 		var week = 1;
 		var date = this.startDate;
+		var divisionCounter = 0;
 		
 		// For response.forEach
 		var columnNumbers = teamNumber/2;
 		
-		if(teamNumber >= 4) {
+		if(teamNumber >= 4 && teamNumber <= 10) {
 			for(var i = 0; i < roundsNumber; i++ ) {
 				Meteor.call('generateSchedule', teamNumber, function(error, response) {
 					if(switchCounter === 1) {
@@ -37,12 +38,14 @@ Template.divisionPage.events({
 					}
 					response.forEach(function (array) {
 						for(var i = 0; i<columnNumbers; i++) {
-							array[i].push(week)
+							array[i].push(week);
 							array[i].push(date);
 							var homeTeam = array[i][0];
 							var visitorTeam = array[i][1];
 							var match = {
-								matchId: Random.id(),
+								divisionCounter: counter,
+								matchId: Random.id(7),
+								divisionId: divisionId,
 								week: week,
 								matchNumber: i+1,
 								matchInfo: [],
@@ -122,7 +125,7 @@ Template.divisionPage.events({
 								visitorTeamBalance: "$50"
 							}
 							array[i].push(match);
-							Meteor.call('createMatch', match);
+							Meteor.call('createMatch', match, counter);
 						};
 						week += 1;
 						date = new Date(date.setDate(date.getDate() + 7));

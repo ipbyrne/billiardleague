@@ -1,6 +1,8 @@
 Template.matchPage.events({
 	'click .save-match': function() {
-		console.log(Session.get('match-info').matchId);
+		console.log(Number($('#home-points1').val())+Number($('#home-points2').val())+Number($('#home-points3').val())+Number($('#home-points4').val())+Number($('#home-points5').val()));
+		var originalHTotal = Number($('#home-points1').val())+Number($('#home-points2').val())+Number($('#home-points3').val())+Number($('#home-points4').val())+Number($('#home-points5').val());
+		var originalVTotal = Number($('#visitor-points1').val())+ Number($('#visitor-points2').val())+ Number($('#visitor-points3').val())+ Number($('#visitor-points4').val())+ Number($('#visitor-points5').val());
 		var match = {
 								matchId: Session.get('match-info').matchId,
 								week: Session.get('match-info').week,
@@ -36,13 +38,13 @@ Template.matchPage.events({
 								homePoints3: $('#home-points3').val(),
 								homePoints4: $('#home-points4').val(),
 								homePoints5: $('#home-points5').val(),
-								homePointsTotal: $('#home-points-total').val(),
+								homePointsTotal: Number($('#home-points1').val())+Number($('#home-points2').val())+Number($('#home-points3').val())+Number($('#home-points4').val())+Number($('#home-points5').val()),
 								homeSkillLevel1: $('#home-skilllevel1').val(),
 								homeSkillLevel2: $('#home-skilllevel2').val(),
 								homeSkillLevel3: $('#home-skilllevel3').val(),
 								homeSkillLevel4: $('#home-skilllevel4').val(),
 								homeSkillLevel5: $('#home-skilllevel5').val(),
-								homeSkillLevelTotal: $('#home-skilllevel-total').val(),
+								homeSkillLevelTotal: ( Number($('#home-skilllevel1').val())+ Number($('#home-skilllevel2').val())+ Number($('#home-skilllevel3').val())+ Number($('#home-skilllevel4').val())+ Number($('#home-skilllevel5').val()))/5,
 								homePlayerName1:$('#home-player-name1').val(),
 								homePlayerName2:$('#home-player-name2').val(),
 								homePlayerName3:$('#home-player-name3').val(),
@@ -61,13 +63,13 @@ Template.matchPage.events({
 								visitorPoints3: $('#visitor-points3').val(),
 								visitorPoints4: $('#visitor-points4').val(),
 								visitorPoints5: $('#visitor-points5').val(),
-								visitorPointsTotal: $('#visitor-points-total').val(),
+								visitorPointsTotal:  Number($('#visitor-points1').val())+ Number($('#visitor-points2').val())+ Number($('#visitor-points3').val())+ Number($('#visitor-points4').val())+ Number($('#visitor-points5').val()),
 								visitorSkillLevel1: $('#visitor-skilllevel1').val(),
 								visitorSkillLevel2: $('#visitor-skilllevel2').val(),
 								visitorSkillLevel3: $('#visitor-skilllevel3').val(),
 								visitorSkillLevel4: $('#visitor-skilllevel4').val(),
 								visitorSkillLevel5: $('#visitor-skilllevel5').val(),
-								visitorSkillLevelTotal: $('#visitor-skilllevel-total').val(),
+								visitorSkillLevelTotal: (Number($('#visitor-skilllevel1').val())+ Number($('#visitor-skilllevel2').val())+ Number($('#visitor-skilllevel3').val())+ Number($('#visitor-skilllevel4').val())+ Number($('#visitor-skilllevel5').val()))/5,
 								visitorPlayerName1:$('#visitor-player-name1').val(),
 								visitorPlayerName2:$('#visitor-player-name2').val(),
 								visitorPlayerName3:$('#visitor-player-name3').val(),
@@ -82,12 +84,16 @@ Template.matchPage.events({
 								visitorTeamNotes: $('#visitor-team-notes').val(),
 								visitorTeamBalance: $('#visitor-team-balance').val()
 							}
-		Meteor.call('updateMatch', match, function(error) {
+		
+		//Meteor.call('updateMatchDecrease', match, Session.get('divisionId2'), originalHTotal, originalVTotal);
+		Meteor.call('updateMatchIncrease', match, Session.get('divisionId2'), originalHTotal, originalVTotal, function(error) {
 			if(error) {
 				toastr.error("Failed to update match... " +error);
 			} else {
 				toastr.success("Match Updated");
 			}
 		});
+		
+		
 	}
 });

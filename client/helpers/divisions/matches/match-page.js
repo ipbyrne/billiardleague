@@ -5,7 +5,7 @@ Template.matchPage.helpers({
 	matchScoreSheets: function() {
 		return Scoresheets.find({matchId: Session.get('match-info').matchId })
 	},
-	divisionId: function() {
+	divisionIdHelper: function() {
 		return Session.get('divisionId2');
 	},
 	matchFromCollection: function() {

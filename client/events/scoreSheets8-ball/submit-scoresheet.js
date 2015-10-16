@@ -15,6 +15,8 @@ Template.submitScoreSheet.events({
 			var row = {
 				gameNumber: $("#game-field-"+rowCounter).val(),
 				break: $("#break"+rowCounter).find( 'option:selected' ).val(),
+				hl1: $("#hl1-"+rowCounter).find( 'option:selected' ).val(),
+				hl2: $("#hl2-"+rowCounter).find( 'option:selected' ).val(),
 				gd11: $("#game-data1-1-row"+rowCounter).find( 'option:selected' ).val(),
 				gd12: $("#game-data2-2-row"+rowCounter).find( 'option:selected' ).val(),
 				gd21: $("#game-data2-1-row"+rowCounter).find( 'option:selected' ).val(),

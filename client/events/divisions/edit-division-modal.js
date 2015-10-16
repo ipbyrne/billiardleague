@@ -9,7 +9,7 @@ Template.editDivisionModal.events({
 		if($.inArray(this.title, division.teamNames) !== -1) {
 			toastr.error("Failed to add team because he is already in the division...");
 		} else {
-			Meteor.call('addDivisionTeam', division._id, this.title, this.memberCount, division.teamCount, function(error) {
+			Meteor.call('addDivisionTeam', division._id, this.title, this.memberCount, division.teamCount, this.hotspotBar, this.hotspotAddress, this.hotspotCity, this.hotspotState, this.hotspotPhone, this.captain, function(error) {
 				if(error) {
 					toastr.error("Failed to add team..." + error);
 				} else {

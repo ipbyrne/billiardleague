@@ -49,3 +49,11 @@ Template.registerHelper('isSelected', function(someValue, otherValue) {
 			return ""
 		}
 });
+
+Template.registerHelper('formatDate', function(date) {
+  return moment(date).format("MMM Do YY");
+});
+
+Template.registerHelper('indexer', function(index) {
+  return index + 1;
+});
