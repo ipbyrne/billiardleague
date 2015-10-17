@@ -20,6 +20,7 @@ Template.divisionPage.events({
 		var week = 1;
 		var date = this.startDate;
 		var divisionCounter = 0;
+		var switchCounterTwo = 1;
 		
 		// For response.forEach
 		var columnNumbers = teamNumber/2;
@@ -27,15 +28,18 @@ Template.divisionPage.events({
 		if(teamNumber >= 4 && teamNumber <= 10) {
 			for(var i = 0; i < roundsNumber; i++ ) {
 				Meteor.call('generateSchedule', teamNumber, function(error, response) {
-					if(switchCounter === 1) {
+					//if(switchCounter === 1) {
 						response.forEach(function (array) {
-							for(var i = 0; i<columnNumbers; i++) {
-								var temp = array[i][0];
-								array[i][0] = array[i][1];
-								array[i][1] = temp;
-							};
+							if(switchCounterTwo === 1) {
+								for(var i = 0; i<columnNumbers; i++) {
+									var temp = array[i][0];
+									array[i][0] = array[i][1];
+									array[i][1] = temp;
+								};
+							}
+							switchCounterTwo *= -1;
 						})
-					}
+					//}
 					response.forEach(function (array) {
 						for(var i = 0; i<columnNumbers; i++) {
 							array[i].push(week);
