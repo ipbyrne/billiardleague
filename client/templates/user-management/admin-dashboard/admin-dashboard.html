@@ -40,10 +40,14 @@
 								<tr>
 									<td class="text-left text-middle">{{emails.[0].address}}{{#if belongsToYou}}<label class="btn btn-sm btn-warning pull-right">You!</label>{{/if}}</td>
 									<td>
+										{{#if belongsToYou}}
+										<p>{{profile.role}}</p>
+										{{else}}
 										<select name="userRole" id="userRole" class="form-control">
 											<option {{isSelected "Admin" profile.role}} value="Admin">Admin</option>
 											<option {{isSelected "Member" profile.role}} value="Member">Member</option>
 										</select>
+										{{/if}}
 									</td>
 									<td>
 										<button class="btn btn-info" data-toggle="modal" data-target="#edit-user-modal{{_id}}"><i class="fa fa-pencil"></i></button>
