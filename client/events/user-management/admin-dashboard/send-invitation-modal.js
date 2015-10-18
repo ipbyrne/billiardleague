@@ -14,7 +14,11 @@ Template.sendInvitationModal.events({
 				zipcode: $('#signup-zipcode').val(),
 				country: $('#signup-country').val(),
 				skillLevel: $("#skill-level").find( 'option:selected' ).val(),
-				balance: "$10"
+				balance: "$10",
+				gamesWon: 0,
+				eightBallBreaks: 0,
+				nineBallBreaks: 0,
+				breakAndRuns: 0
 			}
 		}
 		var email = $('#signup-email').val();

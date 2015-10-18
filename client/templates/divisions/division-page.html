@@ -13,7 +13,7 @@
 			<hr>
 		</div>
 		{{#if itemBelongsToYou}}
-			<div class="col-xs-12 well">
+			<div class="col-xs-12 well no-print">
 
 					<div class="btn-group pull-right">
 						<a><button class="btn btn-success" data-toggle="modal" data-target="#edit-division-modal">Add Teams</button></a>
@@ -29,7 +29,7 @@
 			
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#home">Roster</a></li>
-				<li><a data-toggle="tab" href="#menu1">Leaderboard</a></li>
+				<li><a data-toggle="tab" href="#menu1" class="no-print">Leaderboard</a></li>
 			</ul>
 
 			<div class="tab-content">
@@ -107,8 +107,8 @@
 			<h2>Rounds</h2>
 			<h2>{{roundsNumber}}</h2>
 		</div>
-		<div class="col-xs-12 text-right">
-			<button class="btn btn-success btn-sm" onclick="PrintElem('#schedule-div')">Print Schedule</button>
+		<div class="col-xs-12 text-right no-print">
+			<button class="btn btn-success btn-sm" onClick="window.print()">Print Schedule</button>
 			<br>
 			<br>
 		</div>
@@ -173,32 +173,6 @@
 		</div>
 	</div>
 	{{/if}}
-	<script type="text/javascript">
-
-	function PrintElem(elem)
-	{
-			Popup($(elem).html());
-	}
-
-	function Popup(data) 
-	{
-			var mywindow = window.open('', 'Division Schedule', 'height=400,width=600');
-			mywindow.document.write('<html><head><title>Division Schedule</title>');
-			/*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
-			mywindow.document.write('</head><body >');
-			mywindow.document.write(data);
-			mywindow.document.write('</body></html>');
-
-			mywindow.document.close(); // necessary for IE >= 10
-			mywindow.focus(); // necessary for IE >= 10
-
-			mywindow.print();
-			mywindow.close();
-
-			return true;
-	}
-
-	</script>
 	<div class="hide">
 		{{teamsInDivision}}
 	</div>

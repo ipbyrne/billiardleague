@@ -225,6 +225,68 @@ Meteor.methods({
 	deleteScoreSheet: function(scoreSheetId) {
 		Scoresheets.remove({_id: scoreSheetId});
 	},
+	updateUserStats: function(row, homePlayer, visitorPlayer) {
+		// Home
+		// If Home player break is "8" update eightBall Breaks
+		if(row.break1 == 8) {
+			Meteor.users.update({"profile.name": homePlayer}, {$inc: {"profile.eightBallBreaks": 1 }});
+		}
+		// If home player win is "check" update games one
+		if(row.win1 == "&#x2713;") {
+			Meteor.users.update({"profile.name": homePlayer}, {$inc: {"profile.gamesWon": 1 }});
+		}
+		
+		// If home player win is "BR" update breakAndRuns
+		if(row.win1 == "BR") {
+			Meteor.users.update({"profile.name": homePlayer}, {$inc: {"profile.breakAndRuns": 1, "profile.gamesWon": 1 }});
+		}
+		
+		//Visitor
+		// If Visitor player break is "8" update eightBall Breaks
+		if(row.break2 == 9) {
+			Meteor.users.update({"profile.name": visitorPlayer}, {$inc: {"profile.eightBallBreaks": 1 }});
+		}
+		// If Visitor player win is "check" update games one
+		if(row.win2 == "&#x2713;") {
+			Meteor.users.update({"profile.name": visitorPlayer}, {$inc: {"profile.gamesWon": 1 }});
+		}
+		
+		// If Visitor player win is "BR" update breakAndRuns
+		if(row.win2 == "BR") {
+			Meteor.users.update({"profile.name": visitorPlayer}, {$inc: {"profile.breakAndRuns": 1, "profile.gamesWon": 1 }});
+		}
+	},
+	updateUserStats2: function(row, homePlayer, visitorPlayer) {
+		//Home
+		// If Home player break is "8" update eightBall Breaks
+		if(row.break1 == 9) {
+			Meteor.users.update({"profile.name": homePlayer}, {$inc: {"profile.nineBallBreaks": 1 }});
+		}
+		// If home player win is "check" update games one
+		if(row.win1 == "&#x2713;") {
+			Meteor.users.update({"profile.name": homePlayer}, {$inc: {"profile.gamesWon": 1 }});
+		}
+		
+		// If home player win is "BR" update breakAndRuns
+		if(row.win1 == "BR") {
+			Meteor.users.update({"profile.name": homePlayer}, {$inc: {"profile.breakAndRuns": 1, "profile.gamesWon": 1 }});
+		}
+		
+		//Visitor
+		// If Visitor player break is "8" update eightBall Breaks
+		if(row.break2 == 9) {
+			Meteor.users.update({"profile.name": visitorPlayer}, {$inc: {"profile.nineBallBreaks": 1 }});
+		}
+		// If Visitor player win is "check" update games one
+		if(row.win2 == "&#x2713;") {
+			Meteor.users.update({"profile.name": visitorPlayer}, {$inc: {"profile.gamesWon": 1 }});
+		}
+		
+		// If Visitor player win is "BR" update breakAndRuns
+		if(row.win2 == "BR") {
+			Meteor.users.update({"profile.name": visitorPlayer}, {$inc: {"profile.breakAndRuns": 1, "profile.gamesWon": 1 }});
+		}
+	},
 	// Match Methods
 	createMatch: function(match) {
 		Matches.insert(match);

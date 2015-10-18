@@ -24,3 +24,15 @@
 	width: 100%;
 	overflow: scroll
 }
+
+/* No Print */
+@media print
+{    
+	.no-print, .no-print *
+	{
+			display: none !important;
+	}
+	a:after {
+    display: none;
+  }
+}

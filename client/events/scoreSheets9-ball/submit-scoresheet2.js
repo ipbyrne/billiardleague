@@ -14,7 +14,8 @@ Template.submitScoreSheet2.events({
 			rowCounter += 1;
 			var row = {
 				gameNumber: $("#game-field-"+rowCounter).val(),
-				break: $("#break"+rowCounter).find( 'option:selected' ).val(),
+				break1: $("#break"+rowCounter).find( 'option:selected' ).val(),
+				break2: $("#break2-"+rowCounter).find( 'option:selected' ).val(),
 				gd11: $("#game-data1-1-row"+rowCounter).find( 'option:selected' ).val(),
 				gd12: $("#game-data2-2-row"+rowCounter).find( 'option:selected' ).val(),
 				gd21: $("#game-data2-1-row"+rowCounter).find( 'option:selected' ).val(),
@@ -79,6 +80,9 @@ Template.submitScoreSheet2.events({
 				win2: $("#win-2-row"+rowCounter).find( 'option:selected' ).val()
 			};
 			rows.push(row);
+			Meteor.call('updateUserStats2', row, Session.get('homePlayer'), Session.get('visitorPlayer'),  function(error) {
+				
+			});
 		}
 		
 		var scoreSheet = {
