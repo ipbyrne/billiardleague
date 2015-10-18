@@ -331,103 +331,143 @@ Meteor.methods({
 		var visitorTeamIndex = Number(match.visitorTeam) -1;
 		
 		if(visitorTeamIndex === 0) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.0.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.0.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.0.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 1) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.1.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.1.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.1.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 2) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.2.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.2.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.2.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 3) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.3.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 4) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.4.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.4.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.4.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 5) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.5.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.5.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.5.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 6) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.6.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.6.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.6.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 7) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.7.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.7.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.7.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 8) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.8.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.8.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.8.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(visitorTeamIndex === 9) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.9.points": match.visitorPointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.9.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.9.points": match.visitorPointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 0) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.0.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.0.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.0.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 1) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.1.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.1.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.1.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 2) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.2.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.2.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.2.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 3) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.3.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 4) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.4.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.4.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.4.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 5) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.5.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.5.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.5.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 6) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.6.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.6.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.6.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 7) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.7.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.7.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.7.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 8) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.8.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.8.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.8.points": match.homePointsTotal}});
+			}
 		}
 		
 		if(homeTeamIndex === 9) {
-			Divisions.update({ _id: divisionId}, {$inc: {"teams.9.points": match.homePointsTotal}});
-			//Divisions.update({ _id: divisionId}, {$inc: {"teams.3.points":-originalHTotal}});
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.9.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.9.points": match.homePointsTotal}});
+			}
 		}
 	},
 	updateMatchDecrease: function(match, divisionId, originalHTotal, originalVTotal) {
