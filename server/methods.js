@@ -223,6 +223,39 @@ Meteor.methods({
 		return findScoreSheet.matchId;
 	},
 	deleteScoreSheet: function(scoreSheetId) {
+		var scoreSheet = Scoresheets.findOne({_id: scoreSheetId});
+		
+		scoreSheet.row.forEach(function(row){
+			//Home
+			// If Home player break is "8" update eightBall Breaks
+			if(row.break1 == 9) {
+				Meteor.users.update({"profile.name": scoreSheet.homePlayer}, {$inc: {"profile.nineBallBreaks": -1 }});
+			}
+			// If home player win is "check" update games one
+			if(row.win1 == "&#x2713;") {
+				Meteor.users.update({"profile.name": scoreSheet.homePlayer}, {$inc: {"profile.gamesWon": -1 }});
+			}
+
+			// If home player win is "BR" update breakAndRuns
+			if(row.win1 == "BR") {
+				Meteor.users.update({"profile.name": scoreSheet.homePlayer}, {$inc: {"profile.breakAndRuns": -1, "profile.gamesWon": -1 }});
+			}
+
+			//Visitor
+			// If Visitor player break is "8" update eightBall Breaks
+			if(row.break2 == 9) {
+				Meteor.users.update({"profile.name": scoreSheet.visitorPlayer}, {$inc: {"profile.nineBallBreaks": -1 }});
+			}
+			// If Visitor player win is "check" update games one
+			if(row.win2 == "&#x2713;") {
+				Meteor.users.update({"profile.name": scoreSheet.visitorPlayer}, {$inc: {"profile.gamesWon": -1 }});
+			}
+
+			// If Visitor player win is "BR" update breakAndRuns
+			if(row.win2 == "BR") {
+				Meteor.users.update({"profile.name": scoreSheet.visitorPlayer}, {$inc: {"profile.breakAndRuns": -1, "profile.gamesWon": -1 }});
+			}
+		});
 		Scoresheets.remove({_id: scoreSheetId});
 	},
 	updateUserStats: function(row, homePlayer, visitorPlayer) {
