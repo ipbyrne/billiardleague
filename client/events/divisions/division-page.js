@@ -25,7 +25,7 @@ Template.divisionPage.events({
 		// For response.forEach
 		var columnNumbers = teamNumber/2;
 		
-		if(teamNumber >= 4 && teamNumber <= 10) {
+		if(teamNumber >= 4 && teamNumber <= 20) {
 			for(var i = 0; i < roundsNumber; i++ ) {
 				Meteor.call('generateSchedule', teamNumber, function(error, response) {
 					//if(switchCounter === 1) {
@@ -141,7 +141,7 @@ Template.divisionPage.events({
 			}
 			toastr.success("Schedule & Matches Generated!");
 		} else {
-			toastr.error("You must have atleast 4 teams in the division!");
+			toastr.error("You must have atleast 4 teams in the division and no more than 20.");
 		}
 	},
 	'click .match-panel':function() {

@@ -231,6 +231,9 @@ Meteor.methods({
 			if(row.break1 == 9) {
 				Meteor.users.update({"profile.name": scoreSheet.homePlayer}, {$inc: {"profile.nineBallBreaks": -1 }});
 			}
+			if(row.break1 == 8) {
+				Meteor.users.update({"profile.name": scoreSheet.homePlayer}, {$inc: {"profile.eightBallBreaks": -1 }});
+			}
 			// If home player win is "check" update games one
 			if(row.win1 == "&#x2713;") {
 				Meteor.users.update({"profile.name": scoreSheet.homePlayer}, {$inc: {"profile.gamesWon": -1 }});
@@ -245,6 +248,10 @@ Meteor.methods({
 			// If Visitor player break is "8" update eightBall Breaks
 			if(row.break2 == 9) {
 				Meteor.users.update({"profile.name": scoreSheet.visitorPlayer}, {$inc: {"profile.nineBallBreaks": -1 }});
+			}
+			
+			if(row.break2 == 8) {
+				Meteor.users.update({"profile.name": scoreSheet.visitorPlayer}, {$inc: {"profile.eightBallBreaks": -1 }});
 			}
 			// If Visitor player win is "check" update games one
 			if(row.win2 == "&#x2713;") {
@@ -400,6 +407,76 @@ Meteor.methods({
 			}
 		}
 		
+		if(visitorTeamIndex === 10) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.10.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.10.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 11) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.11.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.11.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 12) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.12.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.12.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 13) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.13.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.13.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 14) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.14.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.14.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 15) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.15.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.15.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 16) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.16.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.16.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 17) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.17.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.17.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 18) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.18.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.18.points": match.visitorPointsTotal}});
+			}
+		}
+		
+		if(visitorTeamIndex === 19) {
+			if(match.visitorPointsTotal != originalVTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.19.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.19.points": match.visitorPointsTotal}});
+			}
+		}
+		
 		if(homeTeamIndex === 0) {
 			if(match.homePointsTotal != originalHTotal) {
 				Divisions.update({ _id: divisionId}, {$set: {"teams.0.points": 0}});
@@ -467,6 +544,76 @@ Meteor.methods({
 			if(match.homePointsTotal != originalHTotal) {
 				Divisions.update({ _id: divisionId}, {$set: {"teams.9.points": 0}});
 				Divisions.update({ _id: divisionId}, {$inc: {"teams.9.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 10) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.10.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.10.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 11) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.11.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.11.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 12) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.12.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.12.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 13) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.13.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.13.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 14) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.14.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.14.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 15) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.15.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.15.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 16) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.16.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.16.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 17) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.17.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.17.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 18) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.18.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.18.points": match.homePointsTotal}});
+			}
+		}
+		
+		if(homeTeamIndex === 19) {
+			if(match.homePointsTotal != originalHTotal) {
+				Divisions.update({ _id: divisionId}, {$set: {"teams.19.points": 0}});
+				Divisions.update({ _id: divisionId}, {$inc: {"teams.19.points": match.homePointsTotal}});
 			}
 		}
 	},
